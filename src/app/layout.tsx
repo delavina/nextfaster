@@ -5,6 +5,7 @@ import { Menu, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { categories } from "./data";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,29 +34,30 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
          <div className="flex flex-col min-h-screen">
-      <header className="flex items-center justify-between p-4 border-b">
+      <header className="flex items-center justify-between p-4 border-b-2 border-y-red-300">
         <div className="flex items-center space-x-4">
           <Button variant="ghost" size="icon">
             <Menu className="h-6 w-6" />
             <span className="sr-only">Toggle menu</span>
           </Button>
-          <h1 className="text-2xl font-bold">digitalprops</h1>
+          <Link href="/" className="text-2xl font-bold">digitalprops</Link>
         </div>
         <div className="flex items-center space-x-4">
           <div className="relative">
             <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search" className="pl-8 w-[300px]" /></div>
+            <Input placeholder="Suche" className="pl-8 w-[300px]" />
+            </div>
             <Button variant="ghost">ORDER</Button>
-          <Button variant="ghost">ORDER HISTORY</Button>
+            <Button variant="ghost">ORDER HISTORY</Button>
         </div>
       </header>
       <div className="flex flex-1">
-        <aside className="w-64 border-r p-4 hidden md:block">
+        <aside className="w-64 border-r border-stone-400 selection:p-4 hidden md:block">
           <h2 className="font-semibold mb-4">Choose a Category</h2>
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             {categories.map((category) => (
-              <li key={category}>
-                <a href="#" className="text-sm hover:underline">
+              <li key={category} className=" hover:bg-stone-100 pb-2 group">
+                <a href="#" className="text-xs group-hover:underline text-stone-800">
                   {category}
                 </a>
               </li>
