@@ -1,8 +1,8 @@
 export default async function Page(props: {
   params: Promise<{
-      subcategory: string;
+    subcategory: string;
   }>;
-}){
-  const {subcategory} = await props.params;
-return <>{subcategory}</>
+}) {
+  const { subcategory } = await props.params;
+  return <>{subcategory}</>;
 }
