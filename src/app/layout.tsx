@@ -29,31 +29,35 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col flex-grow">
           <header className="flex items-center justify-between p-4 border-b-2 border-y-red-300">
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
-              <Link href="/" className="text-2xl font-bold">
-                digitalprops
+              <Link href="/" className="text-2xl font-medium">
+                digital<span className="text-red-600">props</span>
               </Link>
             </div>
             <div className="flex items-center space-x-4">
               <div className="relative">
-                <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Suche" className="pl-8 w-[300px]" />
+                <Input placeholder="Suche" className="w-[300px]" />
+                <Search className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground" />
               </div>
-              <Button variant="ghost">ORDER</Button>
-              <Button variant="ghost">ORDER HISTORY</Button>
+              <Button variant="ghost" className="text-lg text-green-800">
+                ORDER
+              </Button>
+              <Button variant="ghost" className="text-lg text-stone-800">
+                ORDER HISTORY
+              </Button>
             </div>
           </header>
-          <div className="flex flex-1">
+          <div className="flex flex-grow">
             <aside className="w-64 border-r border-stone-400 selection:p-4 hidden md:block">
               <h2 className="font-semibold mb-4">Choose a Category</h2>
               <ul className="space-y-1">
@@ -69,9 +73,69 @@ export default function RootLayout({
                 ))}
               </ul>
             </aside>
-            {children}
+            <main className="flex-grow">{children}</main>
           </div>
         </div>
+        <footer className="flex h-10 items-center justify-between border-t border-gray-400 px-4 font-helvetica text-[11px]">
+          <div>
+            <Link href="/" className="p-1 hover:bg-stone-200 hover:underline">
+              Home
+            </Link>
+            <span>|</span>
+            <Link
+              href="/contact"
+              className="p-1 hover:bg-stone-200 hover:underline"
+            >
+              Kontakt
+            </Link>
+            <span>|</span>
+            <Link
+              href="/terms"
+              className="p-1 hover:bg-stone-200 hover:underline"
+            >
+              AGB
+            </Link>
+            <span>|</span>
+            <Link
+              href="/privacy"
+              className="p-1 hover:bg-stone-200 hover:underline"
+            >
+              Datenschutz
+            </Link>
+            <span>|</span>
+            <Link
+              href="/about"
+              className="p-1 hover:bg-stone-200 hover:underline"
+            >
+              About
+            </Link>
+            <span>|</span>
+            <Link
+              href="/privacy"
+              className="p-1 hover:bg-stone-200 hover:underline"
+            >
+              Solidworks Add-In
+            </Link>
+            <span>|</span>
+            <Link
+              href="/help"
+              className="p-1 hover:bg-stone-200 hover:underline"
+            >
+              Hilfe
+            </Link>
+            <span>|</span>
+            <Link
+              href="/settings"
+              className="p-1 hover:bg-stone-200 hover:underline"
+            >
+              Settings
+            </Link>
+          </div>
+          <div>
+            By using this website, you agree to our Terms and Conditions and
+            Privacy Policy
+          </div>
+        </footer>
       </body>
     </html>
   );
