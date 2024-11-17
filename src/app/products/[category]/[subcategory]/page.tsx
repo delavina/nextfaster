@@ -7,25 +7,25 @@ const screwTypes = [
       {
         name: "Alloy Steel Socket Head Screws",
         description: "The standard for high-strength fastening.",
-        imageUrl: "/placeholder.svg?height=50&width=50",
+        imageUrl: "/placeholder.png?height=50&width=50",
       },
       {
         name: "Mil. Spec. Alloy Steel Socket Head Screws",
         description:
           "Choose these screws for their adherence to strict military standards for material and construction.",
-        imageUrl: "/placeholder.svg?height=50&width=50",
+        imageUrl: "/placeholder.png?height=50&width=50",
       },
       {
         name: "Torx Alloy Steel Socket Head Screws",
         description:
           "A Torx-Plus drive has more points of contact than a hex drive, allowing you to tighten these screws with less slippage or damage to the recess.",
-        imageUrl: "/placeholder.svg?height=50&width=50",
+        imageUrl: "/placeholder.png?height=50&width=50",
       },
       {
         name: "Left-Hand Threaded Alloy Steel Socket Head Screws",
         description:
           "Tighten these screws by turning them to the left; once fastened, they prevent counterclockwise-moving parts from loosening.",
-        imageUrl: "/placeholder.svg?height=50&width=50",
+        imageUrl: "/placeholder.png?height=50&width=50",
       },
     ],
   },
@@ -56,7 +56,7 @@ export default async function Page(props: {
                 >
                   <div className="py-2">
                     <Image
-                      src="/placeholder.svg?height=48&width=48"
+                      src="/placeholder.png?height=48&width=48"
                       alt={item.name}
                       width={48}
                       height={48}
