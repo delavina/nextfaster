@@ -33,8 +33,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex flex-col flex-grow">
-          <header className="flex items-center justify-between p-4 border-b-2 border-y-red-300">
+        <div className="flex flex-grow flex-col">
+          <header className="flex items-center justify-between border-b-2 border-stone-300 p-4">
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
@@ -58,14 +58,14 @@ export default function RootLayout({
             </div>
           </header>
           <div className="flex flex-grow">
-            <aside className="w-64 border-r border-stone-400 selection:p-4 hidden md:block">
-              <h2 className="font-semibold mb-4">Choose a Category</h2>
+            <aside className="hidden w-64 border-r border-stone-400 selection:p-4 md:block">
+              <h2 className="mb-4 font-semibold">Choose a Category</h2>
               <ul className="space-y-1">
                 {categories.map((category) => (
-                  <li key={category} className=" hover:bg-stone-100 pb-2 group">
+                  <li key={category} className="group pb-2 hover:bg-stone-100">
                     <a
                       href="#"
-                      className="text-xs group-hover:underline text-stone-800"
+                      className="text-xs text-stone-800 group-hover:underline"
                     >
                       {category}
                     </a>
@@ -76,7 +76,7 @@ export default function RootLayout({
             <main className="flex-grow">{children}</main>
           </div>
         </div>
-        <footer className="flex h-10 items-center justify-between border-t border-gray-400 px-4 font-helvetica text-[11px]">
+        <footer className="flex h-10 items-center justify-between border-t border-gray-400 px-4 text-[11px]">
           <div>
             <Link href="/" className="p-1 hover:bg-stone-200 hover:underline">
               Home
