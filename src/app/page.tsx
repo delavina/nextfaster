@@ -13,7 +13,7 @@ export default function Home() {
               <img
                 src={subcategory.icon}
                 alt={subcategory.name}
-                className="w-12 h-12 mb-2"
+                className="w-12 h-12 border mb-2 hover:bg-red-300"
                 width={48}
                 height={48}
               />
