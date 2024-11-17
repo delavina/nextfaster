@@ -49,12 +49,18 @@ export default function RootLayout({
                 <Input placeholder="Suche" className="w-[300px]" />
                 <Search className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground" />
               </div>
-              <Button variant="ghost" className="text-lg text-green-800">
+              <Link
+                href="/order"
+                className="text-lg text-green-800 hover:underline"
+              >
                 ORDER
-              </Button>
-              <Button variant="ghost" className="text-lg text-stone-800">
+              </Link>
+              <Link
+                href="/order-history"
+                className="text-lg text-stone-800 hover:underline"
+              >
                 ORDER HISTORY
-              </Button>
+              </Link>
             </div>
           </header>
           <div className="flex flex-grow">
@@ -76,7 +82,7 @@ export default function RootLayout({
             <main className="flex-grow">{children}</main>
           </div>
         </div>
-        <footer className="flex h-10 items-center justify-between border-t border-gray-400 px-4 text-[11px]">
+        <footer className="flex h-6 items-center justify-between border-t border-gray-400 px-4 text-[11px]">
           <div>
             <Link href="/" className="p-1 hover:bg-stone-200 hover:underline">
               Home
