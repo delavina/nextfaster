@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { artSupplies } from "./data";
 import Link from "next/link";
+import { getAllCategories } from "@/db/utils";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,7 +27,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const allCategories = artSupplies.flatMap((item) => item.categories);
+  const allCategories = getAllCategories();
   return (
     <html lang="en" className="h-full">
       <body

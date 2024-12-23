@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { artSupplies } from "./data";
 import Image from "next/image";
+import { getAllCollections } from "@/db/utils";
 
 export default function Home() {
+  const collections = getAllCollections();
   return (
     <div className="flex-1 p-4">
-      {artSupplies.map((collection) => (
+      {collections.map((collection) => (
         <div key={collection.collectionName} className="mb-8">
           <h2 className="mb-4 text-xl font-semibold">
             {collection.collectionName}

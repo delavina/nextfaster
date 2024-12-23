@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { artSupplies } from "@/app/data";
 import { notFound } from "next/navigation";
+import { getCategoryDetails } from "@/db/utils";
 
 export default async function Page(props: {
   params: Promise<{
@@ -10,13 +10,8 @@ export default async function Page(props: {
 }) {
   const { category } = await props.params;
   const urlDecoded = decodeURIComponent(category);
-  const categoryData = artSupplies.find((c) =>
-    c.categories.find((cat) => cat.categoryName === urlDecoded),
-  );
-  const cat = categoryData?.categories.find(
-    (cat) => cat.categoryName === urlDecoded,
-  );
-  if (!categoryData || !cat) {
+  const cat = getCategoryDetails(urlDecoded);
+  if (!cat) {
     return notFound();
   }
   return (
