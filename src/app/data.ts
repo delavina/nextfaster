@@ -1,120 +1,3 @@
-export const categories = [
-  "User Interaction",
-  "Action Graphics",
-  "SetDec Graphics",
-  "Screen Content",
-  "Documents",
-  "Formulare",
-  "templates",
-  "readymades",
-  "Hand Tools",
-  "Hardware",
-  "Heating & Cooling",
-  "Lubricating",
-  "Material Handling",
-  "Measuring & Inspecting",
-  "Office Supplies & Signs",
-  "Pipe, Tubing, Hose & Fittings",
-  "Plumbing & Janitorial",
-  "Power Transmission",
-  "Pressure & Temperature Control",
-  "Pulling & Lifting",
-  "Raw Materials",
-  "Safety Supplies",
-  "Sealing & Cutting",
-  "Sealing",
-  "Shipping",
-  "Suspending",
-];
-
-export const productCategories = [
-  {
-    name: "User Interaction",
-    subcategories: [
-      { name: "Handy Grafiken", icon: "/placeholder.png?height=50&width=50" },
-      {
-        name: "Desktop Grafiken",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      { name: "Tablet Grafiken", icon: "/placeholder.png?height=50&width=50" },
-      { name: "U-Bolts", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Nuts", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Washers", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Shims", icon: "/placeholder.png?height=50&width=50" },
-      {
-        name: "Helical & Threaded Inserts",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      {
-        name: "Spacers & Standoffs",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      { name: "Pins", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Anchors", icon: "/placeholder.png?height=50&width=50" },
-    ],
-  },
-  {
-    name: "Action Graphics",
-    subcategories: [
-      {
-        name: "Pipe Fittings & Pipe",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      { name: "Pipe Hangers", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Pipe Joints", icon: "/placeholder.png?height=50&width=50" },
-      {
-        name: "Pipe & Tube Repair Tools",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      {
-        name: "Pipe Flange Spreaders",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      { name: "Tubing", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Tube Fittings", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Tube Cutters", icon: "/placeholder.png?height=50&width=50" },
-      {
-        name: "Tube Flaring Tools",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      { name: "Tube Benders", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Manifolds", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Hose", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Hose Fittings", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Hose Nozzles", icon: "/placeholder.png?height=50&width=50" },
-      {
-        name: "Hose & Tube Clamps",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      { name: "Hose Reels", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Tank Fittings", icon: "/placeholder.png?height=50&width=50" },
-    ],
-  },
-  {
-    name: "Service Tools",
-    subcategories: [
-      { name: "Bearings", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Bushings", icon: "/placeholder.png?height=50&width=50" },
-      {
-        name: "Bearing & Gear Pullers",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      { name: "Bearing Heaters", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Motors", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Speed Reducers", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Clutches", icon: "/placeholder.png?height=50&width=50" },
-      {
-        name: "Brake & Clutch Lining",
-        icon: "/placeholder.png?height=50&width=50",
-      },
-      { name: "Shafts", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Shaft Couplings", icon: "/placeholder.png?height=50&width=50" },
-      { name: "Shaft Collars", icon: "/placeholder.png?height=50&width=50" },
-      { name: "U-Joints", icon: "/placeholder.png?height=50&width=50" },
-    ],
-  },
-];
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const artSuppliesForArm = [
   {
@@ -222,12 +105,13 @@ export const artSupplies = [
     categories: [
       {
         categoryName: "Acrylic Paints (Basic and Professional Grades)",
+        icon: "/images/acrylic-paint-icon.png",
         categoryItems: [
           {
             subCollectionName: "Basic Acrylic Paints",
             subcategories: [
               {
-                name: "Student Grade",
+                subcategoryName: "Student Grade",
                 products: [
                   {
                     name: "Basics Acrylic Paint Set",

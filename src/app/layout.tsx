@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Menu, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { categories } from "./data";
+// import { artSupplies } from "./data";
 import Link from "next/link";
 
 const geistSans = localFont({
@@ -36,17 +35,20 @@ export default function RootLayout({
         <div className="flex flex-grow flex-col">
           <header className="flex items-center justify-between border-b-2 border-stone-300 p-4">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon">
+              {/*              <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
-              </Button>
+              </Button> */}
               <Link href="/" className="text-2xl font-medium">
                 digital<span className="text-red-600">props</span>
               </Link>
             </div>
             <div className="flex items-center space-x-4">
               <div className="relative">
-                <Input placeholder="Suche" className="w-[300px]" />
+                <Input
+                  placeholder="Suche"
+                  className="w-[450px] font-sans font-medium"
+                />
                 <Search className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground" />
               </div>
               <Link
@@ -67,7 +69,7 @@ export default function RootLayout({
             <aside className="hidden w-64 border-r border-stone-400 selection:p-4 md:block">
               <h2 className="mb-4 font-semibold">Choose a Category</h2>
               <ul className="space-y-1">
-                {categories.map((category) => (
+                {/* {categories.map((category: string) => (
                   <li key={category} className="group pb-2 hover:bg-stone-100">
                     <a
                       href="#"
@@ -76,66 +78,29 @@ export default function RootLayout({
                       {category}
                     </a>
                   </li>
-                ))}
+                ))} */}
               </ul>
             </aside>
             <main className="flex-grow">{children}</main>
           </div>
         </div>
         <footer className="flex h-6 items-center justify-between border-t border-gray-400 px-4 text-[11px]">
-          <div>
-            <Link href="/" className="p-1 hover:bg-stone-200 hover:underline">
-              Home
-            </Link>
+          <div className="space-x-1">
+            <span className="hover:bg-stone-200 hover:underline">Home</span>
             <span>|</span>
-            <Link
-              href="/contact"
-              className="p-1 hover:bg-stone-200 hover:underline"
-            >
-              Kontakt
-            </Link>
+            <span className="hover:bg-stone-200 hover:underline">Location</span>
             <span>|</span>
-            <Link
-              href="/terms"
-              className="p-1 hover:bg-stone-200 hover:underline"
-            >
-              AGB
-            </Link>
+            <span className="hover:bg-stone-200 hover:underline">Returns</span>
             <span>|</span>
-            <Link
-              href="/privacy"
-              className="p-1 hover:bg-stone-200 hover:underline"
-            >
-              Datenschutz
-            </Link>
+            <span className="hover:bg-stone-200 hover:underline">Careers</span>
             <span>|</span>
-            <Link
-              href="/about"
-              className="p-1 hover:bg-stone-200 hover:underline"
-            >
-              About
-            </Link>
+            <span className="hover:bg-stone-200 hover:underline">
+              Mobile App
+            </span>
             <span>|</span>
-            <Link
-              href="/privacy"
-              className="p-1 hover:bg-stone-200 hover:underline"
-            >
-              Solidworks Add-In
-            </Link>
+            <span className="hover:bg-stone-200 hover:underline">Help</span>
             <span>|</span>
-            <Link
-              href="/help"
-              className="p-1 hover:bg-stone-200 hover:underline"
-            >
-              Hilfe
-            </Link>
-            <span>|</span>
-            <Link
-              href="/settings"
-              className="p-1 hover:bg-stone-200 hover:underline"
-            >
-              Settings
-            </Link>
+            <span className="hover:bg-stone-200 hover:underline">Settings</span>
           </div>
           <div>
             By using this website, you agree to our Terms and Conditions and
