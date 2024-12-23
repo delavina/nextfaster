@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { artSupplies } from "../../data";
+import { artSupplies } from "@/app/data";
 import { notFound } from "next/navigation";
 
 export default async function Page(props: {
@@ -37,7 +37,7 @@ export default async function Page(props: {
                 >
                   <div className="py-2">
                     <Image
-                      src="/placeholder.png?height=48&width=48"
+                      src="/placeholder.svg?height=48&width=48"
                       alt={subcategory.subcategoryName}
                       width={48}
                       height={48}
