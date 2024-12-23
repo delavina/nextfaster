@@ -36,10 +36,6 @@ export default function RootLayout({
         <div className="flex flex-grow flex-col">
           <header className="flex items-center justify-between border-b-2 border-stone-300 p-4">
             <div className="flex items-center space-x-4">
-              {/*              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle menu</span>
-              </Button> */}
               <Link href="/" className="text-2xl font-medium">
                 digital<span className="text-red-600">props</span>
               </Link>
@@ -75,7 +71,10 @@ export default function RootLayout({
                     key={category.categoryName}
                     className="group pb-2 hover:bg-stone-200"
                   >
-                    <Link href={`/products/${category.categoryName}`}>
+                    <Link
+                      href={`/products/${category.categoryName}`}
+                      className="text-xs text-gray-800 group-hover:underline"
+                    >
                       {category.categoryName}
                     </Link>
                   </li>
