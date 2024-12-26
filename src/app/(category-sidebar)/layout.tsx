@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {allCategories.map((category) => (
             <li key={category.categoryName}>
               <a href={`/products/${category.categoryName}`}>
-                <div className="text-wrap py-1 text-xs text-gray-800 hover:bg-yellow-100 hover:underline">
+                <div className="text-wrap py-1 text-xs text-gray-800 hover:bg-stone-100 hover:underline">
                   {category.categoryName}
                 </div>
               </a>
