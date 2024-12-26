@@ -43,7 +43,7 @@ export default function RootLayout({
             <div className="relative">
               <Input
                 placeholder="Suche"
-                className="w-[450px] font-sans font-medium"
+                className="w-[300px] font-sans font-medium md:w-[450px]"
               />
               <Search className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground" />
             </div>
