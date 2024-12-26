@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { artSupplies } from "./data";
+import { SearchDropdownComponent } from "@/components/search-dropdown";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,13 +39,7 @@ export default function RootLayout({
                 digital<span className="text-red-600">props</span>
               </Link>
             </div>
-            <div className="relative">
-              <Input
-                placeholder="Suche"
-                className="w-[300px] font-sans font-medium md:w-[450px]"
-              />
-              <Search className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground" />
-            </div>
+            <SearchDropdownComponent />
             <div className="flex flex-row justify-between space-x-4">
               <Link
                 href="/order"
@@ -84,8 +77,8 @@ export default function RootLayout({
             <main className="flex-grow">{children}</main>
           </div>
         </div>
-        <footer className="flex h-6 items-center justify-between border-t border-gray-400 px-4 text-[11px]">
-          <div className="space-x-1">
+        <footer className="flex h-auto flex-col items-center justify-between space-y-2 border-t border-gray-400 px-4 text-[11px] sm:h-6 sm:flex-row sm:space-y-0">
+          <div className="flex flex-wrap justify-center space-x-1 sm:justify-start">
             <span className="hover:bg-stone-200 hover:underline">Home</span>
             <span>|</span>
             <span className="hover:bg-stone-200 hover:underline">Location</span>
@@ -102,9 +95,15 @@ export default function RootLayout({
             <span>|</span>
             <span className="hover:bg-stone-200 hover:underline">Settings</span>
           </div>
-          <div>
-            By using this website, you agree to our Terms and Conditions and
-            Privacy Policy
+          <div className="text-center sm:text-right">
+            By using this website, you agree to our Terms and Conditions:{" "}
+            <Link
+              href="https://github.com/ethanniser/NextMaster"
+              className="font-bold hover:underline"
+              target="_blank"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </footer>
       </body>
