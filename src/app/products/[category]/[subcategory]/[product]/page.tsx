@@ -30,22 +30,28 @@ export default async function Page(props: {
   return (
     <div className="container mx-auto p-4">
       <h1 className="border-t-2 pt-1 text-xl font-bold text-green-800">
-        {productData?.name}
+        {productData.name}
       </h1>
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-2">
           <Image
-            src={productData?.name}
-            alt={productData?.name}
+            src={"/placeholder.svg?height=64&width=64"}
+            alt={productData.name}
             width={64}
             height={64}
             className="h-64 w-64 flex-shrink-0 border-2"
           />
-          <p className="flex-grow text-base">{productData?.description}</p>
+          <p className="flex-grow text-base">{productData.description}</p>
         </div>
-        <button className="max-w-[150px] rounded-[2px] bg-green-800 px-2 py-1 text-sm font-semibold text-white">
-          Add to cart
-        </button>
+        <form className="flex flex-col gap-2">
+          <input type="hidden" name="product_slug" value={productData.name} />
+          <button
+            type="submit"
+            className="max-w-[150px] rounded-[2px] bg-green-800 px-5 py-1 text-sm font-semibold text-white"
+          >
+            Add to cart
+          </button>
+        </form>
       </div>
       <div className="pt-8">
         <h2 className="text-lg font-bold text-green-800">
