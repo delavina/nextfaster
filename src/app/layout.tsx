@@ -55,27 +55,7 @@ export default function RootLayout({
               </Link>
             </div>
           </header>
-          <div className="flex flex-grow">
-            <aside className="hidden w-64 border-r border-stone-400 selection:p-4 md:block">
-              <h2 className="mb-4 font-semibold">Choose a Category</h2>
-              <ul className="space-y-1">
-                {allCategories.map((category) => (
-                  <li
-                    key={category.categoryName}
-                    className="group pb-2 hover:bg-stone-200"
-                  >
-                    <Link
-                      href={`/products/${category.categoryName}`}
-                      className="text-xs text-gray-800 group-hover:underline"
-                    >
-                      {category.categoryName}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </aside>
-            <main className="flex-grow">{children}</main>
-          </div>
+          {children}
         </div>
         <footer className="flex h-auto flex-col items-center justify-between space-y-2 border-t border-gray-400 px-4 text-[11px] sm:h-6 sm:flex-row sm:space-y-0">
           <div className="flex flex-wrap justify-center space-x-1 sm:justify-start">
