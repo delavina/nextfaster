@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import { SearchDropdownComponent } from "@/components/search-dropdown";
 import { getCart } from "@/lib/cart";
+import { MenuIcon } from "lucide-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,10 +35,16 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-full flex-col antialiased`}
       >
         <div className="flex flex-grow flex-col">
-          <header className="flex items-center justify-between border-b-2 border-stone-300 p-4">
+          <header className="flex items-center justify-between gap-4 border-b-2 border-stone-300 p-2 md:p-4">
             <div className="flex items-center space-x-4">
-              <Link href="/" className="text-2xl font-medium">
+              <Link href="/" className="hidden text-3xl font-medium sm:block">
                 digital<span className="text-red-600">props</span>
+              </Link>
+              <Link href="/" className="block text-4xl font-medium sm:hidden">
+                <div className="rounded-sm bg-stone-100 p-2 tracking-tighter">
+                  <span className="text-black">d</span>
+                  <span className="text-red-600">p</span>
+                </div>
               </Link>
             </div>
             <SearchDropdownComponent />
@@ -58,9 +65,15 @@ export default async function RootLayout({
               </div>
               <Link
                 href="/order-history"
-                className="text-lg text-green-800 hover:underline"
+                className="hidden text-lg text-green-800 hover:underline md:block"
               >
                 ORDER HISTORY
+              </Link>
+              <Link
+                href="/order-history"
+                className="block text-lg text-green-800 hover:underline md:hidden"
+              >
+                <MenuIcon />
               </Link>
             </div>
           </header>
