@@ -27,7 +27,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cart = await getCart();
-  console.log(cart);
 
   return (
     <html lang="en" className="h-full">
