@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { db } from "@/db";
 import { ne } from "drizzle-orm";
-import { AddToCartForm } from "./add-to-cart-form";
+import { AddToCartForm } from "@/components/add-to-cart-form";
 
 export default async function Page(props: {
   params: Promise<{
