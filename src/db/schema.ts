@@ -46,14 +46,16 @@ export const subcategories = pgTable("subcategories", {
 
 export type Subcategory = typeof subcategories.$inferSelect;
 
-export const products = pgTable("products", {
-  slug: text("slug").notNull().primaryKey(),
-  name: text("name").notNull(),
-  description: text("description").notNull(),
-  price: numeric("price").notNull(),
-  subcategory_slug: text("subcategory_slug")
-    .notNull()
-    .references(() => subcategories.slug, { onDelete: "cascade" }),
+export const products = pgTable(
+  "products",
+  {
+    slug: text("slug").notNull().primaryKey(),
+    name: text("name").notNull(),
+    description: text("description").notNull(),
+    price: numeric("price").notNull(),
+    subcategory_slug: text("subcategory_slug")
+      .notNull()
+      .references(() => subcategories.slug, { onDelete: "cascade" }),
   },
   (table) => ({
     nameSearchIndex: index("name_search_index").using(
