@@ -1,10 +1,12 @@
+import { integer, numeric, pgTable, serial, text } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
-import { pgTable, serial, text, integer, numeric } from "drizzle-orm/pg-core";
 
 export const collections = pgTable("collections", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
 });
+
+export type Collection = typeof collections.$inferSelect;
 
 export const categories = pgTable("categories", {
   slug: text("slug").notNull().primaryKey(),
@@ -14,13 +16,17 @@ export const categories = pgTable("categories", {
     .references(() => collections.id, { onDelete: "cascade" }),
 });
 
+export type Category = typeof categories.$inferSelect;
+
 export const subcollection = pgTable("subcollections", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  category_slug: integer("category_slug")
+  category_slug: text("category_slug")
     .notNull()
     .references(() => categories.slug, { onDelete: "cascade" }),
 });
+
+export type Subcollection = typeof subcollection.$inferSelect;
 
 export const subcategories = pgTable("subcategories", {
   slug: text("slug").notNull().primaryKey(),
@@ -30,15 +36,19 @@ export const subcategories = pgTable("subcategories", {
     .references(() => subcollection.id, { onDelete: "cascade" }),
 });
 
+export type Subcategory = typeof subcategories.$inferSelect;
+
 export const products = pgTable("products", {
   slug: text("slug").notNull().primaryKey(),
   name: text("name").notNull(),
   description: text("description").notNull(),
   price: numeric("price").notNull(),
-  subcategory_slug: integer("subcategory_slug")
+  subcategory_slug: text("subcategory_slug")
     .notNull()
     .references(() => subcategories.slug, { onDelete: "cascade" }),
 });
+
+export type Product = typeof products.$inferSelect;
 
 export const collectionsRelations = relations(collections, ({ many }) => ({
   categories: many(categories),

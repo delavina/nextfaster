@@ -8,7 +8,7 @@ export default async function Layout({
 }) {
   const allCategories = await db.select().from(categories);
   return (
-    <div className="font-helvetica-roman flex flex-grow">
+    <div className="flex flex-grow">
       <aside className="hidden w-48 min-w-48 border-r border-gray-400 p-3 md:block">
         <h2 className="border-b border-green-800 text-sm font-semibold text-green-900">
           Choose a Category

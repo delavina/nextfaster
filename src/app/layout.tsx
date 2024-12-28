@@ -43,13 +43,13 @@ export default function RootLayout({
                 href="/order"
                 className="text-lg text-green-800 hover:underline"
               >
-                ORDER
+                NEU
               </Link>
               <Link
                 href="/order-history"
                 className="text-lg text-stone-800 hover:underline"
               >
-                ORDER HISTORY
+                ALT
               </Link>
             </div>
           </header>
