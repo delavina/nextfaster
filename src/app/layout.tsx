@@ -30,7 +30,7 @@ export default async function RootLayout({
   const cart = await getCart();
 
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-full flex-col antialiased`}
       >
@@ -54,7 +54,7 @@ export default async function RootLayout({
                   href="/order"
                   className="text-lg text-green-800 hover:underline"
                 >
-                  ORDER
+                  ORDERN
                 </Link>
                 {cart.length > 0 && (
                   <div className="absolute -right-3 -top-1 rounded-full bg-yellow-300 px-1 text-xs text-green-800">
@@ -67,7 +67,7 @@ export default async function RootLayout({
                 href="/order-history"
                 className="hidden text-lg text-green-800 hover:underline md:block"
               >
-                ORDER HISTORY
+                Meine Bestellungen
               </Link>
               <Link
                 href="/order-history"

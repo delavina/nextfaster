@@ -19,6 +19,7 @@ export default async function Page(props: {
     with: {
       products: true,
     },
+    orderBy: (subcategories, { asc }) => asc(subcategories.name),
   });
 
   if (!sub) {
@@ -46,6 +47,7 @@ export default async function Page(props: {
             category_slug={category}
             subcategory_slug={subcategory}
             product={product}
+            imageUrl={product.image_url}
           />
         ))}
       </div>

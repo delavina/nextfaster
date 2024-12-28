@@ -7,6 +7,7 @@ export default async function Home() {
     with: {
       categories: true,
     },
+    orderBy: (collections, { asc }) => asc(collections.name),
   });
   return (
     <div className="p-4">
@@ -21,7 +22,7 @@ export default async function Home() {
                 href={`/products/${category.slug}`}
               >
                 <Image
-                  src={category.icon}
+                  src={category.image_url ?? "/placeholder.png"}
                   alt={category.name}
                   className="mb-2 h-14 w-14 border hover:bg-stone-200"
                   width={48}
