@@ -1,53 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Search, X } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { Product } from "../db/schema";
+import { searchProducts } from "../lib/actions";
+import Link from "next/link";
 
-type Item = {
-  id: string;
-  name: string;
-  icon: string;
+type SearchResult = Product & {
+  href: string;
 };
-
-const items: Item[] = [
-  {
-    id: "1",
-    name: "screen content",
-    icon: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "2",
-    name: "user interaction",
-    icon: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "3",
-    name: "action graphics",
-    icon: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "4",
-    name: "set dec graphics",
-    icon: "/placeholder.svg?height=40&width=40",
-  },
-  {
-    id: "5",
-    name: "service design",
-    icon: "/placeholder.svg?height=40&width=40",
-  },
-];
 
 export function SearchDropdownComponent() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [filteredItems, setFilteredItems] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const filteredItems = items.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  useEffect(() => {
+    const search = async () => {
+      const results = await searchProducts(searchTerm);
+      setFilteredItems(results);
+    };
+
+    search();
+  }, [searchTerm]);
 
   return (
     <div className="font-sans">
@@ -81,23 +60,21 @@ export function SearchDropdownComponent() {
           <div className="absolute z-10 mt-1 w-full rounded-md border border-gray-200 bg-white shadow-lg">
             <ScrollArea className="h-[300px]">
               {filteredItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex cursor-pointer items-center p-2 hover:bg-gray-100"
-                  onClick={() => {
-                    setSearchTerm(item.name);
-                    setIsOpen(false);
-                  }}
-                >
-                  <Image
-                    src={item.icon}
-                    alt=""
-                    className="h-10 w-10 pr-2"
-                    height={40}
-                    width={40}
-                  />
-                  <span className="text-sm">{item.name}</span>
-                </div>
+                <Link href={item.href} key={item.id}>
+                  <div
+                    key={item.href}
+                    className="flex cursor-pointer items-center p-2 hover:bg-stone-200"
+                  >
+                    <Image
+                      src={item.imageUrl}
+                      alt={item.name}
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 flex-shrink-0 object-cover pr-2"
+                    />
+                    <span className="text-sm">{item.name}</span>
+                  </div>
+                </Link>
               ))}
             </ScrollArea>
           </div>
