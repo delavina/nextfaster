@@ -2,6 +2,8 @@ import { ProductLink } from "@/components/ui/product-card";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { db } from "@/db";
+import { addToCart } from "@/lib/actions";
+import { ne } from "drizzle-orm";
 
 export default async function Page(props: {
   params: Promise<{
@@ -13,13 +15,16 @@ export default async function Page(props: {
   const { product, subcategory, category } = await props.params;
   const urlDecodedProduct = decodeURIComponent(product);
   const urlDecodedSubcategory = decodeURIComponent(subcategory);
-  const urlDecodedCategory = decodeURIComponent(category);
+  // const urlDecodedCategory = decodeURIComponent(category);
   const productData = await db.query.products.findFirst({
     where: (products, { eq }) => eq(products.slug, urlDecodedProduct),
   });
   const related = await db.query.products.findMany({
-    where: (products, { eq }) =>
-      eq(products.subcategory_slug, urlDecodedSubcategory),
+    where: (products, { eq, and }) =>
+      and(
+        eq(products.subcategory_slug, urlDecodedSubcategory),
+        ne(products.slug, urlDecodedProduct),
+      ),
     with: {
       subcategory: true,
     },
@@ -44,8 +49,8 @@ export default async function Page(props: {
           />
           <p className="flex-grow text-base">{productData.description}</p>
         </div>
-        <form className="flex flex-col gap-2">
-          <input type="hidden" name="product_slug" value={productData.name} />
+        <form className="flex flex-col gap-2" action={addToCart}>
+          <input type="hidden" name="productSlug" value={productData.name} />
           <button
             type="submit"
             className="max-w-[150px] rounded-[2px] bg-green-800 px-5 py-1 text-sm font-semibold text-white"
