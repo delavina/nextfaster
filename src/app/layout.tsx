@@ -41,7 +41,7 @@ export default async function RootLayout({
                 digital<span className="text-red-600">props</span>
               </Link>
               <Link href="/" className="block text-4xl font-medium sm:hidden">
-                <div className="rounded-sm bg-stone-100 p-2 tracking-tighter">
+                <div className="rounded-sm bg-stone-100 px-2 pb-2 tracking-tighter">
                   <span className="text-black">d</span>
                   <span className="text-red-600">p</span>
                 </div>
