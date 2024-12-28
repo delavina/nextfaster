@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
-import { artSupplies } from "./data";
 import { SearchDropdownComponent } from "@/components/search-dropdown";
 
 const geistSans = localFont({

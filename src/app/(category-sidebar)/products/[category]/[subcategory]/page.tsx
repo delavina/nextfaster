@@ -1,4 +1,4 @@
-import { artSupplies } from "@/app/data";
+import { db } from "@/db";
 import { notFound } from "next/navigation";
 import { ProductLink } from "@/components/ui/product-card";
 export default async function Page(props: {
@@ -8,23 +8,15 @@ export default async function Page(props: {
   }>;
 }) {
   const { subcategory, category } = await props.params;
-
   const urlDecodedCategory = decodeURIComponent(category);
-  const categoryData = artSupplies.find((c) =>
-    c.categories.find((cat) => cat.categoryName === urlDecodedCategory),
-  );
-  const cat = categoryData?.categories.find(
-    (cat) => cat.categoryName === urlDecodedCategory,
-  );
   const urlDecodedSubcategory = decodeURIComponent(subcategory);
-  const screwTypes = cat?.categoryItems.find((collection) =>
-    collection.subcategories.find(
-      (sub) => sub.subcategoryName === urlDecodedSubcategory,
-    ),
-  );
-  const sub = screwTypes?.subcategories.find(
-    (sub) => sub.subcategoryName === urlDecodedSubcategory,
-  );
+  const sub = await db.query.subcategories.findFirst({
+    where: (subcategories, { eq }) =>
+      eq(subcategories.slug, urlDecodedSubcategory),
+    with: {
+      products: true,
+    },
+  });
   if (!sub) {
     return notFound();
   }
