@@ -66,7 +66,7 @@ export function SearchDropdownComponent() {
                     className="flex cursor-pointer items-center p-2 hover:bg-stone-200"
                   >
                     <Image
-                      src={item.imageUrl ?? "/placeholder.svg"}
+                      src={item.image_url ?? "/placeholder.svg"}
                       alt={item.name}
                       width={40}
                       height={40}
