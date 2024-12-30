@@ -43,9 +43,9 @@ export default async function Page(props: {
           <Image
             src={productData.image_url ?? "/placeholder.svg?height=64&width=64"}
             alt={`A small picture of ${productData.name}`}
-            width={64}
-            height={64}
-            quality={65}
+            width={256}
+            height={256}
+            quality={80} // TODO: check if 80 is appropriate or 100
             className="h-64 w-64 flex-shrink-0 border-2"
           />
           <p className="flex-grow text-base">{productData.description}</p>
