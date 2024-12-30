@@ -19,7 +19,10 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "digitalprops",
+  title: {
+    template: "%s |digitalprops",
+    default: "digitalprops",
+  },
   description: "beautifully designed art supplies",
 };
 
