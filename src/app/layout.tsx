@@ -61,7 +61,7 @@ export default async function RootLayout({
                 >
                   ORDERN
                 </Link>
-                <Suspense>
+                <Suspense fallback={null}>
                   <Cart />
                 </Suspense>
               </div>
