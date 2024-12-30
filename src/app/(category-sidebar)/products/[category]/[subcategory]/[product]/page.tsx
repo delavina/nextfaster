@@ -4,7 +4,27 @@ import { notFound } from "next/navigation";
 import { db } from "@/db";
 import { ne } from "drizzle-orm";
 import { AddToCartForm } from "@/components/add-to-cart-form";
+import { Metadata } from "next";
 
+export async function generateMetadata(props: {
+  params: Promise<{ product: string; category: string; subcategory: string }>;
+}): Promise<Metadata> {
+  const { product: productParam } = await props.params;
+  const urlDecodedProduct = decodeURIComponent(productParam);
+
+  const product = await db.query.products.findFirst({
+    where: (products, { eq }) => eq(products.slug, urlDecodedProduct),
+    orderBy: (products, { asc }) => asc(products.name),
+  });
+
+  if (!product) {
+    return notFound();
+  }
+
+  return {
+    openGraph: { title: product.name, description: product.description },
+  };
+}
 export default async function Page(props: {
   params: Promise<{
     product: string;
