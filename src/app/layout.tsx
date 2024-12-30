@@ -3,8 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
 import { SearchDropdownComponent } from "@/components/search-dropdown";
-import { getCart } from "@/lib/cart";
 import { MenuIcon } from "lucide-react";
+import { Suspense } from "react";
+import { Cart } from "@/components/cart";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,13 +23,14 @@ export const metadata: Metadata = {
   description: "beautifully designed art supplies",
 };
 
+// revalidate the data at most every day
+export const revalidate = 86400;
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cart = await getCart();
-
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
@@ -56,12 +58,9 @@ export default async function RootLayout({
                 >
                   ORDERN
                 </Link>
-                {cart.length > 0 && (
-                  <div className="absolute -right-3 -top-1 rounded-full bg-yellow-300 px-1 text-xs text-green-800">
-                    {" "}
-                    {cart.length}
-                  </div>
-                )}
+                <Suspense>
+                  <Cart />
+                </Suspense>
               </div>
               <Link
                 href="/order-history"
