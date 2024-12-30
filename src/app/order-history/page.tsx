@@ -1,5 +1,9 @@
 import { LoginForm } from "@/components/login-form";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "meine Bestellungen | digitalprops",
+};
 export default function Page() {
   return (
     <main className="min-h-screen p-4">
