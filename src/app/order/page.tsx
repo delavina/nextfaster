@@ -1,8 +1,4 @@
 import { LoginForm } from "@/components/login-form";
-import { getCart } from "@/lib/cart";
-import { db } from "@/db";
-import { products } from "@/db/schema";
-import { inArray } from "drizzle-orm";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { CartItems, TotalCost } from "./dynamic";
@@ -12,25 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const cart = await getCart();
-  const dbProducts = await db
-    .select()
-    .from(products)
-    .where(
-      inArray(
-        products.slug,
-        cart.map((item) => item.productSlug),
-      ),
-    );
-
-  const totalCost = cart.reduce(
-    (acc, item) =>
-      acc +
-      item.quantity *
-        (Number(dbProducts.find((p) => p.slug === item.productSlug)?.price) ??
-          0),
-    0,
-  );
   return (
     <main className="min-h-screen p-4">
       <div className="container mx-auto p-3">
