@@ -71,6 +71,7 @@ export function SearchDropdownComponent() {
                       alt={item.name}
                       width={40}
                       height={40}
+                      quality={65}
                       className="h-10 w-10 flex-shrink-0 object-cover pr-2"
                     />
                     <span className="text-sm">{item.name}</span>
